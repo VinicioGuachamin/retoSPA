@@ -1,0 +1,71 @@
+<!--<div class="row">-->
+<!--  <div class="col-md-12 text-center">-->
+<!--    <h1>Ingresar Empleado</h1>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="modal-header bg-light">
+  <h5 class="modal-title fw-bold">
+    Ingreso dependiente
+  </h5>
+  <button type="button" class="text-dark btn-lg btn btn-link" (click)="cerrarModal()">
+    <h5 style="color: red; text-underline: none">
+      Cerrar
+    </h5>
+  </button>
+</div>
+
+<div class="row py-4 px-4">
+  <div class="col-md-12">
+    <form [formGroup]="parentForm" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input type="text" id="nombre" formControlName="nombre" class="form-control" required [ngClass]="{'is-invalid': parentForm.get('nombre')?.invalid && parentForm.get('nombre')?.touched}">
+        <div class="invalid-feedback" *ngIf="parentForm.get('nombre')?.invalid && parentForm.get('nombre')?.touched">
+          Ingresa un nombre válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido:</label>
+        <input type="text" id="apellido" formControlName="apellido" class="form-control" required [ngClass]="{'is-invalid': parentForm.get('apellido')?.invalid && parentForm.get('apellido')?.touched}">
+        <div class="invalid-feedback" *ngIf="parentForm.get('apellido')?.invalid && parentForm.get('apellido')?.touched">
+          Ingresa un apellido válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento" class="form-control" required [ngClass]="{'is-invalid': parentForm.get('fechaNacimiento')?.invalid && parentForm.get('fechaNacimiento')?.touched}">
+        <div class="invalid-feedback" *ngIf="parentForm.get('fechaNacimiento')?.invalid && parentForm.get('fechaNacimiento')?.touched">
+          Ingresa una fecha de nacimiento válida.
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="parentescoId" class="form-label">Prentesco:</label>
+        <select id="parentescoId" formControlName="parentescoId" class="form-control" required>
+          <option *ngFor="let puesto of listaParentescos" [value]="puesto.id">{{ puesto.descripcion }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="parentForm.get('parentescoId')?.invalid && parentForm.get('parentescoId')?.touched">
+          Ingresa un ID válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="empleadoId" class="form-label">Empleado:</label>
+        <select id="empleadoId" formControlName="empleadoId" class="form-control" required>
+          <option *ngFor="let puesto of listaEmpleados" [value]="puesto.codigoEmpleado">{{ puesto.nombre }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="parentForm.get('empleadoId')?.invalid && parentForm.get('empleadoId')?.touched">
+          Ingresa un ID  válido.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+
+  </div>
+</div>
+

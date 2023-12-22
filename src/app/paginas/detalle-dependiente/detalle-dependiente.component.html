@@ -1,0 +1,35 @@
+<div class="modal-header bg-light">
+  <h5 class="modal-title fw-bold">
+    Detalle Dependientes
+  </h5>
+  <button type="button" class="text-dark btn-lg btn btn-link" (click)="cerrarModal()">
+    <h5 style="color: red; text-underline: none">
+      Cerrar
+    </h5>
+  </button>
+</div>
+
+<div class="row py-5 px-5">
+  <div class="col-md-12 text-center">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Fecha Nacimiento</th>
+        <th scope="col">Parentesco</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listaDependientes">
+        <th scope="row">{{item.codigoDependiente}}</th>
+        <td>{{item.nombre}}</td>
+        <td>{{item.apellido}}</td>
+        <td>{{item.fechaNacimiento}}</td>
+        <td>{{item.parentescoId}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

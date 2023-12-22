@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1>Dependientes</h1>
+  </div>
+</div>
+
+<div class="row py-5 px-5">
+  <div class="col-md-12 text-end">
+    <button class="btn btn-primary" type="submit" (click)="CrearDependiente()">Crear Dependiente</button>
+  </div>
+</div>
+
+<div class="row py-5 px-5">
+  <div class="col-md-12 text-center">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Fecha Nacimiento</th>
+        <th scope="col">Parentesco</th>
+        <th scope="col">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listaDependientes">
+        <th scope="row">{{item.codigoDependiente}}</th>
+        <td>{{item.nombre}}</td>
+        <td>{{item.apellido}}</td>
+        <td>{{item.fechaNacimiento}}</td>
+        <td>{{item.parentescoId}}</td>
+        <td>
+<!--          <div class="btn-group" role="group">-->
+<!--            <button class="btn btn-danger btn-sm me-2" (click)="Eliminarempleado(item.codigoEmpleado)" >-->
+<!--              Eliminar-->
+<!--            </button>-->
+<!--            <button class="btn btn-warning btn-sm" (click)="EditarEmpleado(item.codigoEmpleado)">-->
+<!--              Editar-->
+<!--            </button>-->
+<!--          </div>-->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #modalEditarD let-c="close" let-d="dismiss" data-backdrop="static" data-keyboard="false">
+  <app-ingreso-dependiente (cerrarModalEvent)="CerrarModal()" ></app-ingreso-dependiente>
+</ng-template>

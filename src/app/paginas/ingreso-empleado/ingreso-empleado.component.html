@@ -1,0 +1,89 @@
+<!--<div class="row">-->
+<!--  <div class="col-md-12 text-center">-->
+<!--    <h1>Ingresar Empleado</h1>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="modal-header bg-light">
+  <h5 class="modal-title fw-bold">
+    Ingreso Empleado
+  </h5>
+  <button type="button" class="text-dark btn-lg btn btn-link" (click)="cerrarModal()">
+    <h5 style="color: red; text-underline: none">
+      Cerrar
+    </h5>
+  </button>
+</div>
+
+<div class="row py-4 px-4">
+  <div class="col-md-12">
+    <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input type="text" id="nombre" formControlName="nombre" class="form-control" required [ngClass]="{'is-invalid': empleadoForm.get('nombre')?.invalid && empleadoForm.get('nombre')?.touched}">
+        <div class="invalid-feedback" *ngIf="empleadoForm.get('nombre')?.invalid && empleadoForm.get('nombre')?.touched">
+          Ingresa un nombre válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido:</label>
+        <input type="text" id="apellido" formControlName="apellido" class="form-control" required [ngClass]="{'is-invalid': empleadoForm.get('apellido')?.invalid && empleadoForm.get('apellido')?.touched}">
+        <div class="invalid-feedback" *ngIf="empleadoForm.get('apellido')?.invalid && empleadoForm.get('apellido')?.touched">
+          Ingresa un apellido válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento" class="form-control" required [ngClass]="{'is-invalid': empleadoForm.get('fechaNacimiento')?.invalid && empleadoForm.get('fechaNacimiento')?.touched}">
+        <div class="invalid-feedback" *ngIf="empleadoForm.get('fechaNacimiento')?.invalid && empleadoForm.get('fechaNacimiento')?.touched">
+          Ingresa una fecha de nacimiento válida.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="salarioFijo" class="form-label">Salario Fijo:</label>
+        <input type="number" id="salarioFijo" formControlName="salarioFijo" class="form-control" required [ngClass]="{'is-invalid': empleadoForm.get('salarioFijo')?.invalid && empleadoForm.get('salarioFijo')?.touched}">
+        <div class="invalid-feedback" *ngIf="empleadoForm.get('salarioFijo')?.invalid && empleadoForm.get('salarioFijo')?.touched">
+          Ingresa un salario fijo válido.
+        </div>
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" id="pagaImpuestoRenta" formControlName="pagaImpuestoRenta" class="form-check-input">
+        <label for="pagaImpuestoRenta" class="form-check-label">Paga Impuesto sobre la Renta</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="puestoId" class="form-label">Puesto:</label>
+        <select id="puestoId" formControlName="puestoId" class="form-control" required>
+          <option *ngFor="let puesto of listaPuestos" [value]="puesto.id">{{ puesto.nombrePuesto }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="empleadoForm.get('puestoId')?.invalid && empleadoForm.get('puestoId')?.touched">
+          Ingresa un ID de puesto válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="codigoImpuestoRenta" class="form-label">Código de Impuesto sobre la Renta:</label>
+        <input type="text" id="codigoImpuestoRenta" formControlName="codigoImpuestoRenta" class="form-control" [ngClass]="{'is-invalid': empleadoForm.get('codigoImpuestoRenta')?.invalid && empleadoForm.get('codigoImpuestoRenta')?.touched}">
+        <div class="invalid-feedback" *ngIf="empleadoForm.get('codigoImpuestoRenta')?.invalid && empleadoForm.get('codigoImpuestoRenta')?.touched">
+          El código de impuesto sobre la renta solo puede ser A, B o C.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="numeroDependientes" class="form-label">Número de Dependientes:</label>
+        <input type="number" id="numeroDependientes" formControlName="numeroDependientes" class="form-control" [ngClass]="{'is-invalid': empleadoForm.get('numeroDependientes')?.invalid && empleadoForm.get('numeroDependientes')?.touched}">
+        <div class="invalid-feedback" *ngIf="empleadoForm.get('numeroDependientes')?.invalid && empleadoForm.get('numeroDependientes')?.touched">
+          Ingresa un número de dependientes válido.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+
+  </div>
+</div>
+
